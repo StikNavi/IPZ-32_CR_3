@@ -40,23 +40,22 @@ data class ListItemData(val text: String, val imageResource: Int)
 fun MyList() {
     val itemList = listOf(
         ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 2", R.drawable.study),
         ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 2", R.drawable.study),
         ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 2", R.drawable.study),
         ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 2", R.drawable.study),
         ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 2", R.drawable.study),
         ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 2", R.drawable.study),
         ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 2", R.drawable.study),
         ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 1", R.drawable.study)
+        ListItemData("Елемент 2", R.drawable.study),
+        ListItemData("Елемент 3", R.drawable.study)
     )
 
     LazyColumn {
@@ -71,19 +70,10 @@ fun ListItem(item: ListItemData) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        // Перша колонка
-        Column(
-            modifier = Modifier.weight(1f)
-        ) {
-            Text(
-                text = item.text,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
-        }
-
-        // Друга колонка
+        // Перша колонка (ліворуч)
         Column(
             modifier = Modifier.weight(1f)
         ) {
@@ -93,6 +83,29 @@ fun ListItem(item: ListItemData) {
                 modifier = Modifier
                     .size(64.dp)
                     .align(Alignment.CenterHorizontally)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = item.text,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+        }
+
+        // Друга колонка (праворуч)
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
+            Image(
+                painter = painterResource(id = item.imageResource),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(64.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = item.text,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
             )
         }
     }
