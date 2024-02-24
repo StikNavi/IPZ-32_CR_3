@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -17,12 +19,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Uaedulntucw3Theme {
-                // A surface container using the 'background' color from the theme
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    MyList()
                 }
             }
         }
@@ -30,17 +32,31 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun MyList() {
+    val itemList = listOf(
+        Pair("Елемент 1.1", "Елемент 1.2"),
+        Pair("Елемент 2.1", "Елемент 2.2"),
+        Pair("Елемент 3.1", "Елемент 3.2")
+    )
+
+    LazyColumn {
+        items(itemList) { item ->
+            ListItem(item.first, item.second)
+        }
+    }
+}
+
+@Composable
+fun ListItem(text1: String, text2: String) {
     Text(
-        text = "Hello $name!",
-        modifier = modifier
+        text = "Елемент 1: $text1, Елемент 2: $text2"
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun MyListPreview() {
     Uaedulntucw3Theme {
-        Greeting("Android")
+        MyList()
     }
 }
