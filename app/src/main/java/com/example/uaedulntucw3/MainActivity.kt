@@ -34,14 +34,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyList() {
     val itemList = listOf(
-        Pair("Елемент 1.1", "Елемент 1.2"),
-        Pair("Елемент 2.1", "Елемент 2.2"),
-        Pair("Елемент 3.1", "Елемент 3.2")
+        Pair("Елемент 1.1", R.drawable.image1),
+        Pair("Елемент 2.1", R.drawable.image2),
+        Pair("Елемент 3.1", R.drawable.image3)
     )
 
     LazyColumn {
         items(itemList) { item ->
-            ListItem(item.first, item.second)
+            ListItem(item)
         }
     }
 }
