@@ -40,8 +40,23 @@ data class ListItemData(val text: String, val imageResource: Int)
 fun MyList() {
     val itemList = listOf(
         ListItemData("Елемент 1", R.drawable.study),
-        ListItemData("Елемент 2", R.drawable.study),
-        ListItemData("Елемент 3", R.drawable.study)
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 1", R.drawable.study)
     )
 
     LazyColumn {
@@ -58,22 +73,28 @@ fun ListItem(item: ListItemData) {
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        // Фотографія
-        Image(
-            painter = painterResource(id = item.imageResource),
-            contentDescription = null,
-            modifier = Modifier
-                .size(64.dp)
-                .align(Alignment.CenterVertically),
-        )
+        // Перша колонка
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
+            Text(
+                text = item.text,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
+        }
 
-        // Текст
-        Text(
-            text = item.text,
-            modifier = Modifier
-                .padding(start = 16.dp)
-                .align(Alignment.CenterVertically),
-        )
+        // Друга колонка
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
+            Image(
+                painter = painterResource(id = item.imageResource),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(64.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
+        }
     }
 }
 
