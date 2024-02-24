@@ -3,16 +3,24 @@ package com.example.uaedulntucw3
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.uaedulntucw3.ui.theme.Uaedulntucw3Theme
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,11 +54,29 @@ fun MyList() {
     }
 }
 
+data class ListItemData(val text: String, val imageResource: Int)
+
 @Composable
-fun ListItem(text1: String, text2: String) {
-    Text(
-        text = "Елемент 1: $text1, Елемент 2: $text2"
-    )
+fun ListItem(item: ListItemData) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        // Колонка з текстом
+        Text(
+            text = item.text,
+            modifier = Modifier
+                .weight(1f)
+                .padding(end = 16.dp)
+        )
+
+        // Колонка з фотографією
+        ImageWithText(
+            imageResource = item.imageResource,
+            modifier = Modifier.weight(1f)
+        )
+    }
 }
 
 @Preview(showBackground = true)
