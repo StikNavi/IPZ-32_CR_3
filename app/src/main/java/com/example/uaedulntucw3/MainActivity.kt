@@ -79,6 +79,23 @@ fun ListItem(item: ListItemData) {
     }
 }
 
+@Composable
+fun ImageWithText(imageResource: Int, modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+    ) {
+        val image = painterResource(id = imageResource)
+        androidx.compose.foundation.Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier
+                .size(64.dp)
+                .padding(bottom = 8.dp)
+                .align(Alignment.CenterHorizontally)
+        )
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun MyListPreview() {
