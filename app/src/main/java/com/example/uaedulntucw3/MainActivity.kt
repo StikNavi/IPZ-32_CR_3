@@ -39,9 +39,9 @@ data class ListItemData(val text: String, val imageResource: Int)
 @Composable
 fun MyList() {
     val itemList = listOf(
-        ListItemData("Елемент", R.drawable.study),
-        ListItemData("Елемент", R.drawable.study),
-        ListItemData("Елемент", R.drawable.study)
+        ListItemData("Елемент 1", R.drawable.study),
+        ListItemData("Елемент 2", R.drawable.study),
+        ListItemData("Елемент 3", R.drawable.study)
     )
 
     LazyColumn {
@@ -58,41 +58,21 @@ fun ListItem(item: ListItemData) {
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        // Колонка з текстом
-        Text(
-            text = item.text,
-            modifier = Modifier
-                .weight(1f)
-                .padding(end = 16.dp)
-        )
-
-        // Колонка з фотографією
-        ImageWithText(
-            imageResource = item.imageResource,
-            modifier = Modifier.weight(1f)
-        )
-    }
-}
-
-@Composable
-fun ImageWithText(imageResource: Int, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-    ) {
-        val image = painterResource(id = imageResource)
+        // Фотографія
         Image(
-            painter = image,
+            painter = painterResource(id = item.imageResource),
             contentDescription = null,
             modifier = Modifier
                 .size(64.dp)
-                .padding(bottom = 8.dp)
-                .align(Alignment.CenterHorizontally)
+                .align(Alignment.CenterVertically),
         )
 
-        // Текст, який відображає назву картинки
+        // Текст
         Text(
-            text = "Фото ${imageResource % 100}",
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            text = item.text,
+            modifier = Modifier
+                .padding(start = 16.dp)
+                .align(Alignment.CenterVertically),
         )
     }
 }
