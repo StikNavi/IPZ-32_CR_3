@@ -42,9 +42,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyList() {
     val itemList = listOf(
-        Pair("Елемент 1.1", R.drawable.image1),
-        Pair("Елемент 2.1", R.drawable.image2),
-        Pair("Елемент 3.1", R.drawable.image3)
+        Pair("Елемент", R.drawable.study),
+
     )
 
     LazyColumn {
@@ -92,6 +91,12 @@ fun ImageWithText(imageResource: Int, modifier: Modifier = Modifier) {
                 .size(64.dp)
                 .padding(bottom = 8.dp)
                 .align(Alignment.CenterHorizontally)
+        )
+
+        // Текст, який відображає назву картинки
+        Text(
+            text = "Фото ${imageResource % 100}",
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
 }
